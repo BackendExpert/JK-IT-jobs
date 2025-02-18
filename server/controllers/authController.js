@@ -174,10 +174,16 @@ const authController = {
                 .map(byte => "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"[byte % 62])
                 .join('');
 
-                
+                const hashpass = await bcrypt.hash(checkpass, 10)
 
+                const addpass = await User.findOneAndDelete(
+                    {email: email},
+                    {passrestToken: hashpass},
+                    {new: true}
+                )
+                
                 const token = jwt.sign({ token: checkpass }, process.env.JWT_SECRET);
-                return res.json({ Status: "Success"})
+                return res.json({ Status: "Success", Token: token })
             }
             else{
                 return res.json({ Error: "Internal Server Error"})
