@@ -4,6 +4,7 @@ import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import ForgetPass from "./pages/AuthPages/ForgetPass";
 import VerifyOTP from "./pages/AuthPages/VerifyOTP";
+import ResetPass from "./pages/AuthPages/ResetPass";
 
 export default function App() {
 
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/signup" element={<SignUp /> } />
         <Route path="/forgetpass" element={<ForgetPass /> } />
         <Route path="/verifyotp" element={<VerifyOTP />} />
+        <Route path="/passreset" element={<ResetPass /> } />
       </Routes>
     </BrowserRouter>
   )
