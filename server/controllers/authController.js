@@ -91,6 +91,23 @@ const authController = {
         catch(err){
             console.log(err)
         }
+    },
+
+    forgetpass: async(req, res) => {
+        try{
+            const { email } = req.body
+
+            const chechuser = await User.findOne({ email: email })
+
+            if(chechuser){
+                return res.json({ Error: 'No user found by given email address'})
+            }
+
+            
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 };
 
