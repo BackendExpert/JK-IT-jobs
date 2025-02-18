@@ -170,12 +170,41 @@ const authController = {
             const deleteotp = await UserPassOtp.findOneAndDelete({ email: email })
 
             if(deleteotp){
+                const checkpass = Array.from(crypto.randomFillSync(new Uint8Array(6)))
+                .map(byte => "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"[byte % 62])
+                .join('');
+
+                
+
+                const token = jwt.sign({ token: checkpass }, process.env.JWT_SECRET);
                 return res.json({ Status: "Success"})
             }
             else{
                 return res.json({ Error: "Internal Server Error"})
             }
             
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    resetpass: async(req, res) => {
+        try{
+            const {
+                email, 
+                newpass,
+                confirmnewpass
+            } = req.body
+
+            const useremail = req.params.email
+
+            if(email !== useremail){
+                return res.json({ Error: "email cannot be verify"}) 
+            }
+
+
+
         }
         catch(err){
             console.log(err)

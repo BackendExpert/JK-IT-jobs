@@ -7,5 +7,6 @@ router.post('/signup', authController.signup)
 router.post('/signin', authController.signin)
 router.post('/forgetpass', authController.forgetpass)
 router.post('/verifyotp/:email', authController.verifyotp)
+router.post('/resetpass/:email', authController)
 
 module.exports = router;
