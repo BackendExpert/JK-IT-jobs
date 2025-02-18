@@ -24,11 +24,13 @@ const VerifyOTP = () => {
         }));
     };
 
+    const getemail = localStorage.getItem('email')
+
     const headlesubmit = async (e) => {
         e.preventDefault()
 
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/verifyotp', verifyotp)
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/verifyotp/' + getemail, verifyotp)
             if(res.data.Status === "Success"){
                 alert("OTP Verification Success")
                 navigate('/verifyotp')

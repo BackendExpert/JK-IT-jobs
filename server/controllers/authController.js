@@ -147,6 +147,39 @@ const authController = {
         catch(err){
             console.log(err)
         }
+    },
+
+    verifyotp: async(req, res) => {
+        try{
+            const { otp } = req.body
+
+            const email = req.params.email
+
+            const checkuser = await UserPassOtp.findOne({ email: email })
+
+            if(!checkuser) {
+                return res.json({ Error: "No User found"})
+            }
+
+            const checkotp = await bcrypt.compare(otp, checkuser.otp)
+
+            if(!checkotp){
+                return res.json({ Error: "The OTP is cannot be verify.. please check"})
+            }
+
+            const deleteotp = await UserPassOtp.findOneAndDelete({ email: email })
+
+            if(deleteotp){
+                return res.json({ Status: "Success"})
+            }
+            else{
+                return res.json({ Error: "Internal Server Error"})
+            }
+            
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 };
 
