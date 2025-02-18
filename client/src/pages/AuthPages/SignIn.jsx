@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import DefultInput from '../../components/Forms/DefultInput'
 import { FaEnvelope, FaUser, FaLock } from "react-icons/fa";
 import DefaultBtn from '../../components/Buttons/DefaultBtn'
+import axios from 'axios'
 
 
 
@@ -22,10 +23,24 @@ const SignIn = () => {
         }));
     };
 
-    const headlesubmit = (e) => {
+    const headlesubmit = async (e) => {
         e.preventDefault()
-    }
 
+        try{
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signin', signindata)
+            if(res.data.Status === "Success"){
+                alert("Login Success")
+            }
+            else{
+                alert(res.data.Error || "Login failed. Please try again.");
+            }
+        }
+
+        catch(err){
+            console.log(err)
+            alert("An error occurred. Please check your network and try again.");
+        }
+    }
 
   return (
     <div className='min-h-screen bg-[#c0c7d0]'>
