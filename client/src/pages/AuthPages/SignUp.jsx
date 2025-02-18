@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import bgsignup from '../../assets/bgsignup.png'
 import logo from '../../assets/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import DefultInput from '../../components/Forms/DefultInput'
 import { FaEnvelope, FaUser, FaLock } from "react-icons/fa";
 import DefaultBtn from '../../components/Buttons/DefaultBtn'
@@ -9,6 +9,7 @@ import DefaultBtn from '../../components/Buttons/DefaultBtn'
 
 
 const SignUp = () => {
+    const navigate = useNavigate()
     const [signupdata, setsignupdata] = useState({
         username: '', 
         email: '',
@@ -23,10 +24,25 @@ const SignUp = () => {
         }));
     };
 
-    const headlesubmit = (e) => {
+    const headlesubmit = async (e) => {
         e.preventDefault()
-    }
 
+        try{
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signup', signupdata)
+            if(res.data.Status === "Success"){
+                alert("Registion Success")
+                navigate('/signin')
+            }
+            else{
+                alert(res.data.Error || "Registation failed. Please try again.");
+            }
+        }
+
+        catch(err){
+            console.log(err)
+            alert("An error occurred. Please check your network and try again.");
+        }
+    }
 
   return (
     <div className='min-h-screen bg-[#c0c7d0]'>
@@ -51,7 +67,7 @@ const SignUp = () => {
                         </div>
                         <div className="flex">
                             <p className="text-gray-500 md:block hidden">Already have an Account ? </p>
-                            <Link to={'/signup'}><p className='text-[#0f5a97] pt-1 font-semibold text-sm'>Sign Up</p></Link>
+                            <Link to={'/signin'}><p className='text-[#0f5a97] pt-1 font-semibold text-sm'>Sign in</p></Link>
                         </div>
                     </div>
 
