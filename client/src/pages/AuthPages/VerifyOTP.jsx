@@ -33,6 +33,7 @@ const VerifyOTP = () => {
             const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/verifyotp/' + getemail, verifyotp)
             if(res.data.Status === "Success"){
                 alert("OTP Verification Success")
+                localStorage.setItem("sourcetoken", res.data.Token)
                 navigate('/passreset')
             }
             else{

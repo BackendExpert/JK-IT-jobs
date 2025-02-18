@@ -176,7 +176,7 @@ const authController = {
 
                 const hashpass = await bcrypt.hash(checkpass, 10)
 
-                const addpass = await User.findOneAndDelete(
+                const addpass = await User.findOneAndUpdate(
                     {email: email},
                     {passrestToken: hashpass},
                     {new: true}
@@ -203,11 +203,38 @@ const authController = {
                 confirmnewpass
             } = req.body
 
-            const useremail = req.params.email
+            const token = req.params.token
 
-            if(email !== useremail){
-                return res.json({ Error: "email cannot be verify"}) 
+            const checkemail = await User.findOne({ email: email })
+
+            if(checkemail){
+                return res.json({ Error: 'Email cannot be found'})
             }
+
+            const checkpass = await bcrypt.compare(token, checkemail.passrestToken)
+
+            if(!checkpass){
+                return res.json({ Error: "Process cannot be continue"})
+            }
+
+            if(newpass !== confirmnewpass){
+                return res.json({ Error: "Passwords not Match"})
+            }  
+
+            const hashpass = await bcrypt.hash(newpass, 10)
+
+            const updatepass  = await User.findOneAndUpdate(
+                {email: email},
+                {password: hashpass},
+                {new:true}
+            )
+
+            if(updatepass){
+                
+            }
+            else{
+                return res.json({ Error: "Internal Server Error"})
+            }          
 
 
 

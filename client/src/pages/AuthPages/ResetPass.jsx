@@ -24,12 +24,13 @@ const ResetPass = () => {
         }));
     };
     const getemail = localStorage.getItem('email')
+    const sourceToken = localStorage.getItem('sourcetoken')
 
     const headlesubmit = async (e) => {
         e.preventDefault()
 
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/resetpass/' + getemail, resetpass)
+            const res = await axios.post(import.meta.env.VITE_APP_API + `/auth/resetpass/${sourceToken}/` + getemail, resetpass)
             if(res.data.Status === "Success"){
                 alert("Password Reset Success")
                 navigate('/signin')
