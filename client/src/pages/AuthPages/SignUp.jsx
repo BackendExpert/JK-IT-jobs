@@ -51,7 +51,7 @@ const SignUp = () => {
                         </div>
                         <div className="flex">
                             <p className="text-gray-500 md:block hidden">Already have an Account ? </p>
-                            <Link to={'/signup'}><p className='text-[#0f5a97] pt-1 font-semibold text-sm'>Sign Up</p></Link>
+                            <Link to={'/signin'}><p className='text-[#0f5a97] pt-1 font-semibold text-sm'>Sign in</p></Link>
                         </div>
                     </div>
 
