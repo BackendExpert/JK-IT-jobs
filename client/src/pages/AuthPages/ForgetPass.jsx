@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import bgsignup from '../../assets/bgsignup.png'
 import logo from '../../assets/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import DefultInput from '../../components/Forms/DefultInput'
 import { FaEnvelope, FaUser, FaLock } from "react-icons/fa";
 import DefaultBtn from '../../components/Buttons/DefaultBtn'
@@ -9,15 +9,15 @@ import axios from 'axios'
 
 
 
-const SignIn = () => {
-    const [signindata, setsigindata] = useState({ 
+const ForgetPass = () => {
+    const navigate = useNavigate()
+    const [forgetpass, setforgetpass] = useState({ 
         email: '',
-        password: ''
     })
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setsigindata((prevData) => ({
+        setforgetpass((prevData) => ({
           ...prevData,
           [name]: value
         }));
@@ -27,9 +27,10 @@ const SignIn = () => {
         e.preventDefault()
 
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signin', signindata)
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/forgetpass', forgetpass)
             if(res.data.Status === "Success"){
-                alert("Login Success")
+                alert("The Password Reset OTP Send to Email Success")
+                navigate('/verifyotp')
             }
             else{
                 alert(res.data.Error || "Login failed. Please try again.");
@@ -116,4 +117,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default ForgetPass
