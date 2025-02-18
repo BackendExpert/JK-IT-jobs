@@ -30,6 +30,13 @@ const SignIn = () => {
             const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signin', signindata)
             if(res.data.Status === "Success"){
                 alert("Login Success")
+                navigate('/Dashboard/Home')                    
+                localStorage.setItem("login", res.data.Token)
+                secureLocalStorage.setItem("loginE", res.data.Result.email)
+                secureLocalStorage.setItem("loginU", res.data.Result.username)
+                secureLocalStorage.setItem("loginR", res.data.Result.role)
+                localStorage.setItem("dashmenuID", 1)
+                window.location.reload()
             }
             else{
                 alert(res.data.Error || "Login failed. Please try again.");
