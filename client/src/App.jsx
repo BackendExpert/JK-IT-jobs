@@ -5,6 +5,8 @@ import SignUp from "./pages/AuthPages/SignUp";
 import ForgetPass from "./pages/AuthPages/ForgetPass";
 import VerifyOTP from "./pages/AuthPages/VerifyOTP";
 import ResetPass from "./pages/AuthPages/ResetPass";
+import Dashbaord from "./components/Dashbaord/Dashbaord";
+import DashHome from "./pages/Dashboard/DashHome";
 
 export default function App() {
 
@@ -17,6 +19,10 @@ export default function App() {
         <Route path="/forgetpass" element={<ForgetPass /> } />
         <Route path="/verifyotp" element={<VerifyOTP />} />
         <Route path="/passreset" element={<ResetPass /> } />
+
+        <Route path="/Dashboard/" element={<Dashbaord /> } >
+          <Route path="Home" element={<DashHome /> } /> 
+        </Route>
       </Routes>
     </BrowserRouter>
   )

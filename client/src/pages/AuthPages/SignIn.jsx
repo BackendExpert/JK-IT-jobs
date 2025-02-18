@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import bgsignup from '../../assets/bgsignup.png'
 import logo from '../../assets/logo.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import DefultInput from '../../components/Forms/DefultInput'
 import { FaEnvelope, FaUser, FaLock } from "react-icons/fa";
 import DefaultBtn from '../../components/Buttons/DefaultBtn'
 import axios from 'axios'
-
+import secureLocalStorage from 'react-secure-storage'
 
 
 const SignIn = () => {
+    const navigate = useNavigate()
     const [signindata, setsigindata] = useState({ 
         email: '',
         password: ''
