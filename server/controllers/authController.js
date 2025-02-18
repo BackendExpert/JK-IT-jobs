@@ -71,20 +71,21 @@ const authController = {
                 password
             } = req.body
 
-            const checkuser = await User.find({ email: email })
+            const checkuser = await User.findOne({ email: email })
 
             if(checkuser){
                 const checkpass = await bcrypt.compare(password, checkuser.password)
 
                 if(checkpass){
-
+                    const token = jwt.sign({ id: checkuser._id, role:checkuser.role }, process.env.JWT_SECRET);
+                    return res.json({ Status: "Success", Result: checkuser, Token: token })
                 }   
                 else{
                     return res.json({ Error: "Password not Match"})
                 }
             }   
             else{
-                return res.json({ Error: "No ueser found by given Email"})
+                return res.json({ Error: "No user found by given Email"})
             }
         }
         catch(err){
