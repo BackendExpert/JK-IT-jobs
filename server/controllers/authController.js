@@ -46,7 +46,8 @@ const authController = {
             const newUser = new User({
                 username: username,
                 email: email,
-                password: hashpass
+                password: hashpass,
+                status: true
             })
 
             const resultnewUser = await newUser.save()
@@ -76,7 +77,7 @@ const authController = {
                 const checkpass = await bcrypt.compare(password, checkuser.password)
 
                 if(checkpass){
-                    
+
                 }   
                 else{
                     return res.json({ Error: "Password not Match"})

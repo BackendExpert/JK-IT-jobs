@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: { type: String, enum: ['admin', 'company'], required: true, default: "company" },  
+    isActive: { type: Boolean, required: true, default: false }
 }, {timestamps: true });
 
 const User = mongoose.model('User', UserSchema);
