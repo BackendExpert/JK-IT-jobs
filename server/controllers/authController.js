@@ -101,7 +101,7 @@ const authController = {
 
             const chechuser = await User.findOne({ email: email })
 
-            if(chechuser){
+            if(!chechuser){
                 return res.json({ Error: 'No user found by given email address'})
             }
 
@@ -124,6 +124,8 @@ const authController = {
                 otp: hashotp,
                 expire_at: expireAt
             })
+
+            const resultOTP = await newOTP.save()
 
             if(resultOTP){
                 const mailOptions = {
