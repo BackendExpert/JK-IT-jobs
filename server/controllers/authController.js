@@ -2,7 +2,8 @@ const User = require("../models/User");
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer');
-const PwdResetToken = require("../models/PwdResetToken");
+// const PwdResetToken = require("../models/PwdResetToken");
+const validator = require("validator");
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -21,6 +22,13 @@ const authController = {
                 password
             } = req.body
 
+            if (!validator.isEmail(email)) {
+                return res.json({ error: "Invalid email format" });
+            }
+
+            if (password.length < 6) {
+                return res.json({ Error: "Password must be at least 6 characters" });
+            }
 
             const checkuser = await User.findOne({
                 $or: [
@@ -49,6 +57,34 @@ const authController = {
             else{
                 return res.json({ Error: "Internal Server Error"})
             }            
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    signin: async(req, res) => {
+        try{
+            const {
+                email,
+                password
+            } = req.body
+
+            const checkuser = await User.find({ email: email })
+
+            if(checkuser){
+                const checkpass = await bcrypt.compare(password, checkuser.password)
+
+                if(checkpass){
+                    
+                }   
+                else{
+                    return res.json({ Error: "Password not Match"})
+                }
+            }   
+            else{
+                return res.json({ Error: "No ueser found by given Email"})
+            }
         }
         catch(err){
             console.log(err)
