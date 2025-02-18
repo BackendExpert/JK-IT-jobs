@@ -24,7 +24,7 @@ const Dashbaord = () => {
 
     if(RoleUser !== "" || EmailUser !== "" || Username !== ""){
         return (
-            <div className='w-full bg-[#cbadf2]/20 min-h-screen'>
+            <div className='w-full bg-[#0f5a97]/10 min-h-screen'>
                 <div className="xl:flex">
                     <div
                         className={`shadow-[5px_0_15px_-5px_rgba(0,0,0,0.1)] p-4 xl:block fixed top-0 left-0 h-full bg-white shadow-custom z-50 xl:w-[19%] w-[75%] overflow-y-auto transform duration-500 ${
@@ -38,9 +38,9 @@ const Dashbaord = () => {
                         onClick={headlemenuopen}
                         >
                         {openside ? (
-                            <MdOutlineClose className="fill-[#7829e1] h-8 w-auto" />
+                            <MdOutlineClose className="fill-[#0f5a97] h-8 w-auto" />
                         ) : (
-                            <TiThMenu className="fill-[#7829e1] h-8 w-auto" />
+                            <TiThMenu className="fill-[#0f5a97] h-8 w-auto" />
                         )}
                     </button>
                 
