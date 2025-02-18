@@ -30,6 +30,7 @@ const ForgetPass = () => {
             const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/forgetpass', forgetpass)
             if(res.data.Status === "Success"){
                 alert("The Password Reset OTP Send to Email Success")
+                localStorage.setItem('email', forgetpass.email)
                 navigate('/verifyotp')
             }
             else{

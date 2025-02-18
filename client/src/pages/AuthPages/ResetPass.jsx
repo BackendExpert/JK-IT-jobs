@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import DefultInput from '../../components/Forms/DefultInput'
 import { FaEnvelope, FaUser, FaLock } from "react-icons/fa";
 import DefaultBtn from '../../components/Buttons/DefaultBtn'
+import axios from 'axios'
 
 
 
@@ -23,12 +24,14 @@ const ResetPass = () => {
           [name]: value
         }));
     };
+    const getemail = localStorage.getItem('email')
+    const sourceToken = localStorage.getItem('sourcetoken')
 
     const headlesubmit = async (e) => {
         e.preventDefault()
 
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/resetpass', resetpass)
+            const res = await axios.post(import.meta.env.VITE_APP_API + `/auth/resetpass/${sourceToken}/` + getemail, resetpass)
             if(res.data.Status === "Success"){
                 alert("Password Reset Success")
                 navigate('/signin')
@@ -74,7 +77,7 @@ const ResetPass = () => {
                                     <DefultInput 
                                         icon={FaEnvelope}
                                         type={'email'}
-                                        name={'username'}
+                                        name={'email'}
                                         value={resetpass.email}
                                         placeholder={"Enter Email Address"}
                                         required={true}
