@@ -207,11 +207,11 @@ const authController = {
 
             const checkemail = await User.findOne({ email: email })
 
-            if(checkemail){
+            if(!checkemail){
                 return res.json({ Error: 'Email cannot be found'})
             }
 
-            const checkpass = await bcrypt.compare(token, checkemail.passrestToken)
+            const checkpass = bcrypt.compare(token, checkemail.passrestToken)
 
             if(!checkpass){
                 return res.json({ Error: "Process cannot be continue"})
@@ -230,13 +230,17 @@ const authController = {
             )
 
             if(updatepass){
-                
+                const udpatepasstoken = await User.findOneAndUpdate(
+                    {email: email},
+                    {passrestToken: ""},
+                    {new: true}
+                )
+
+                return res.json({ Status: "Success"})
             }
             else{
                 return res.json({ Error: "Internal Server Error"})
-            }          
-
-
+            }        
 
         }
         catch(err){
