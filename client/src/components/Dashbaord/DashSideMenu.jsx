@@ -1,10 +1,12 @@
 import { BiSolidDashboard } from "react-icons/bi";
-import { FaUsers, FaChalkboardTeacher, FaChartLine  } from "react-icons/fa";
 import { ImBooks } from "react-icons/im";
 import { BsGearFill } from "react-icons/bs";
-import { FaChartPie } from "react-icons/fa6";
-import { GiBookshelf } from "react-icons/gi";
+import { MdWork } from "react-icons/md";
 import { PiExamFill } from "react-icons/pi";
+import { BiBuildings } from "react-icons/bi";
+import { FaBuildingShield } from "react-icons/fa6";
+import { FaUsers } from "react-icons/fa";
+
 
 const sidemenu = [
     {
@@ -16,25 +18,25 @@ const sidemenu = [
     {
         id: 2,
         name: "Jobs",
-        icon: FaUsers,
+        icon: MdWork,
         link: '#'
     },
     {
         id: 3,
         name: "Companies",
-        icon: FaChalkboardTeacher,
+        icon: BiBuildings,
         link: '#'
     },
     {
         id: 4,
         name: "My Companies",
-        icon: ImBooks,
+        icon: FaBuildingShield,
         link: '#'
     },
     {
         id: 5,
         name: "Applicants",
-        icon: PiExamFill,
+        icon: FaUsers,
         link: '#'
     },
     {
