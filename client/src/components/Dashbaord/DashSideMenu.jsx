@@ -1,8 +1,6 @@
 import { BiSolidDashboard } from "react-icons/bi";
-import { ImBooks } from "react-icons/im";
 import { BsGearFill } from "react-icons/bs";
 import { MdWork } from "react-icons/md";
-import { PiExamFill } from "react-icons/pi";
 import { BiBuildings } from "react-icons/bi";
 import { FaBuildingShield } from "react-icons/fa6";
 import { FaUsers } from "react-icons/fa";
