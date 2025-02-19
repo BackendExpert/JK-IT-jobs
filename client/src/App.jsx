@@ -7,6 +7,7 @@ import VerifyOTP from "./pages/AuthPages/VerifyOTP";
 import ResetPass from "./pages/AuthPages/ResetPass";
 import Dashbaord from "./components/Dashbaord/Dashbaord";
 import DashHome from "./pages/Dashboard/DashHome";
+import PrivateRoute from "./components/auth/PrivateRoute";
 
 export default function App() {
 
@@ -20,7 +21,7 @@ export default function App() {
         <Route path="/verifyotp" element={<VerifyOTP />} />
         <Route path="/passreset" element={<ResetPass /> } />
 
-        <Route path="/Dashboard/" element={<Dashbaord /> } >
+        <Route path="/Dashboard/" element={ <PrivateRoute element={<Dashbaord />}/> } >
           <Route path="Home" element={<DashHome /> } /> 
         </Route>
       </Routes>
