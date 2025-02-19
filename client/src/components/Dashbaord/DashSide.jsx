@@ -36,10 +36,10 @@ const DashSide = () => {
     <div className="w-full">
       <div className="flex ml-4">
         <div className="pt-3 pr-2">
-          <IoSchool className="h-8 w-auto fill-[#7829e1]" />
+          <IoSchool className="h-8 w-auto fill-[#0f5a97]" />
         </div>
-        <h1 className="my-4 text-center font-semibold uppercase text-xl bg-gradient-to-r from-[#7829e1] to-[#9e67e8] bg-clip-text text-transparent">
-          CCK Project
+        <h1 className="my-4 text-center font-semibold uppercase text-xl bg-gradient-to-r from-[#0f5a97] to-[#c0c7d0] bg-clip-text text-transparent">
+          JKITJOBS.com
         </h1>
       </div>
 
@@ -53,7 +53,7 @@ const DashSide = () => {
         </div>
         <div className="mt-4 pl-4">
           <p className="uppercase text-gray-500">{Username}</p>
-          <h1 className="text-sm uppercase font-semibold text-[#7829e1]">
+          <h1 className="text-sm uppercase font-semibold text-[#0f5a97]">
             {RoleUser}
           </h1>
         </div>
@@ -70,8 +70,8 @@ const DashSide = () => {
                             onClick={() => currentMenu(menu.id)}
                             className={`py-4 pl-4 cursor-pointer duration-500 flex items-center ${
                               isActive
-                                ? "text-[#7829e1] font-semibold"
-                                : "text-gray-400 hover:pl-6 hover:text-[#7829e1]"
+                                ? "text-[#0f5a97] font-semibold"
+                                : "text-gray-400 hover:pl-6 hover:text-[#0f5a97]"
                             }`}
                           >
                             <menu.icon className="h-8 w-auto" />
@@ -89,8 +89,8 @@ const DashSide = () => {
                             onClick={() => currentMenu(menu.id)}
                             className={`py-4 pl-4 cursor-pointer duration-500 flex items-center ${
                               isActive
-                                ? "text-[#7829e1] font-semibold"
-                                : "text-gray-400 hover:pl-6 hover:text-[#7829e1]"
+                                ? "text-[#0f5a97] font-semibold"
+                                : "text-gray-400 hover:pl-6 hover:text-[#0f5a97]"
                             }`}
                           >
                             <menu.icon className="h-8 w-auto" />

@@ -21,7 +21,7 @@ export default function App() {
         <Route path="/verifyotp" element={<VerifyOTP />} />
         <Route path="/passreset" element={<ResetPass /> } />
 
-        <Route path="/Dashboard/" element={ <PrivateRoute element={<Dashbaord />}/> } >
+        <Route path="/Dashboard/" element={<PrivateRoute element={<Dashbaord /> }/> } >
           <Route path="Home" element={<DashHome /> } /> 
         </Route>
       </Routes>
