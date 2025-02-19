@@ -15,51 +15,33 @@ const sidemenu = [
     },
     {
         id: 2,
-        name: "Stundets",
+        name: "Jobs",
         icon: FaUsers,
-        link: '/Dashboard/Studnets'
+        link: '#'
     },
     {
         id: 3,
-        name: "Staff",
+        name: "Companies",
         icon: FaChalkboardTeacher,
         link: '#'
     },
     {
         id: 4,
-        name: "Questions",
+        name: "My Companies",
         icon: ImBooks,
-        link: '/Dashboard/Questions'
+        link: '#'
     },
     {
         id: 5,
-        name: "Exams",
+        name: "Applicants",
         icon: PiExamFill,
         link: '#'
     },
     {
         id: 6,
-        name: "User Activities",
-        icon: FaChartLine,
-        link: '/Dashboard/UserActivities'
-    },
-    {
-        id: 7,
-        name: "My Exams",
-        icon: GiBookshelf,
-        link: '#'
-    },
-    {
-        id: 8,
-        name: "My Status",
-        icon: FaChartPie,
-        link: '#'
-    },
-    {
-        id: 9,
         name: "Settings",
         icon: BsGearFill,
-        link: '/Dashboard/Settings'
+        link: '#'
     },
 ]
 
