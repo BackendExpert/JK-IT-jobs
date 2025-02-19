@@ -36,9 +36,9 @@ const DashNav = () => {
 
   return (
     <div className='bg-white py-8 shadow-md'>
-        <div className="flex justify-between mr-4">
+        <div className="flex justify-between mr-4 pl-8">
             <div className="w-full">
-                <h1 className="uppercase font-semibold pl-6 text-[#0f5a97] mt-1">Dashboard</h1>
+                <h1 className="uppercase font-semibold text-[#0f5a97] mt-1">Dashboard</h1>
             </div>
             <div className="">
                 <div className="flex xl:mr-4 md:mr-20 mr-20 cursor-pointer" onClick={toggleMenu}>
