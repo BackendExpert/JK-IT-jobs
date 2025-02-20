@@ -2,6 +2,7 @@ import React from 'react'
 import { BiSolidDashboard } from "react-icons/bi";
 import ComapnyLine from '../../components/Charts/ComapnyLine';
 import CountUp from 'react-countup'
+import ComapnyTable from './ComapnyTable';
 
 const CompanyDashboard = () => {
     const companydatadash = [
@@ -71,6 +72,18 @@ const CompanyDashboard = () => {
                 </div>
             </div>
         </div>
+        <div className="my-8">
+            <div className="md:flex">
+                <div className="xl:w-2/3 w-full xl:mt-4">
+                    <ComapnyTable />
+                </div>
+
+                <div className="xl:w-1/3 w-full md:ml-6 md:mt-0 mt-4">
+                    
+                </div>
+            </div>
+        </div>
+
     </div>
   )
 }
