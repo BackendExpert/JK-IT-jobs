@@ -56,6 +56,8 @@ const ComapnyTable = () => {
                 </tr>
             </tbody>
         </table>
+
+        company page, add links, icons etc.....
     </div>
   )
 }
