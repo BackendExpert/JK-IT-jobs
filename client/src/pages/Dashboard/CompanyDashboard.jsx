@@ -7,25 +7,25 @@ const CompanyDashboard = () => {
     const companydatadash = [
         {
             id: 1,
-            name: "Total Companies",
-            value: 500,
-            icon: BiSolidDashboard,
-        },
-        {
-            id: 2,
             name: "Total Jobs",
             value: 500,
             icon: BiSolidDashboard,
         },
         {
+            id: 2,
+            name: "Total Applications",
+            value: 500,
+            icon: BiSolidDashboard,
+        },
+        {
             id: 3,
-            name: "Total Opening Jobs",
+            name: "Total Rejected",
             value: 500, 
             icon: BiSolidDashboard,
         },
         {
             id: 4,
-            name: "Total Opening Jobs",
+            name: "Total Hired",
             value: 500,
             icon: BiSolidDashboard,
         }
