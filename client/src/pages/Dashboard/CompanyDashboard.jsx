@@ -1,13 +1,10 @@
 import React from 'react'
 import { BiSolidDashboard } from "react-icons/bi";
-import LineChart from '../../components/Charts/LineChart';
+import ComapnyLine from '../../components/Charts/ComapnyLine';
 import CountUp from 'react-countup'
-import AdminTableCom from './AdminTableCom';
-import DoughnutChart from '../../components/Charts/DoughnutChart';
 
-
-const AdminDashbaord = () => {
-    const admindashdata = [
+const CompanyDashboard = () => {
+    const companydatadash = [
         {
             id: 1,
             name: "Total Companies",
@@ -23,7 +20,7 @@ const AdminDashbaord = () => {
         {
             id: 3,
             name: "Total Opening Jobs",
-            value: 500,
+            value: 500, 
             icon: BiSolidDashboard,
         },
         {
@@ -32,7 +29,7 @@ const AdminDashbaord = () => {
             value: 500,
             icon: BiSolidDashboard,
         }
-    ]
+    ]    
   return (
     <div className='my-12 mr-4'>
         <div className="flex">
@@ -49,12 +46,12 @@ const AdminDashbaord = () => {
         <div className="my-8">
             <div className="xl:flex">
                 <div className="w-full ">
-                    <LineChart />
+                    <ComapnyLine />
                 </div>
                 <div className="w-full xl:ml-4">
                     <div className="grid md:grid-cols-2 gap-8 md:my-4">
                     {
-                        admindashdata.map((data, index) => {
+                        companydatadash.map((data, index) => {
                             return (
                                 <div className="py-10 rounded-md shadow-xl bg-[#0e80df] text-white px-4" key={index}>
                                     <div className="flex justify-between">
@@ -74,20 +71,8 @@ const AdminDashbaord = () => {
                 </div>
             </div>
         </div>
-
-        <div className="my-8">
-            <div className="md:flex">
-                <div className="xl:w-2/3 w-full xl:mt-4">
-                    <AdminTableCom />
-                </div>
-
-                <div className="xl:w-1/3 w-full md:ml-6 md:mt-0 mt-4">
-                    <DoughnutChart />
-                </div>
-            </div>
-        </div>
     </div>
   )
 }
 
-export default AdminDashbaord
+export default CompanyDashboard
