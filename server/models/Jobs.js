@@ -6,8 +6,16 @@ const JobSchema = new mongoose.Schema({
     desc: { type: String, required: true, unique: true},
     qulification: [{ type: String }],
     skills: { type: String, required: true },
-    applocations: [{ type, String }],
-});
+    salary: { type: Number },
+    applications: [
+        {
+            name: { type: String, required: true },
+            email: { type: String, required: true },
+            cv: { type: String, required: true } 
+        }
+    ],
+    closingdata: { type: Date, required: true },
+}, {timestamps: true});
 
 const Job = mongoose.model('Jobs', JobSchema);
 
