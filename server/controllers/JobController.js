@@ -16,6 +16,7 @@ const JobController = {
             } = req.body
 
             const newJob = new Job({
+                jobposter: email,
                 jobTitle: jobtitle,
                 desc: jobdesc,
                 salary: salary,
