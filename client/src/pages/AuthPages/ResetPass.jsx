@@ -35,6 +35,7 @@ const ResetPass = () => {
             if(res.data.Status === "Success"){
                 alert("Password Reset Success")
                 navigate('/signin')
+                localStorage.clear()
             }
             else{
                 alert(res.data.Error || "Password Reset failed. Please try again.");
