@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const JobSchema = new mongoose.Schema({
-    jobID: { type: String, required: true, unique: true},
     jobposter: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    desc: { type: String, required: true, unique: true},
-    qulification: [{ type: String }],
+    jobTitle: { type: String, required: true },
+    desc: { type: String, required: true },
+    qulification: { type: String },
     skills: { type: String, required: true },
     salary: { type: Number },
     applications: [
@@ -14,7 +14,7 @@ const JobSchema = new mongoose.Schema({
             cv: { type: String, required: true } 
         }
     ],
-    closingdata: { type: Date, required: true },
+    closingdate: { type: Date, required: true },
 }, {timestamps: true});
 
 const Job = mongoose.model('Jobs', JobSchema);
