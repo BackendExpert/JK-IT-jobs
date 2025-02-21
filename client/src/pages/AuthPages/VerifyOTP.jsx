@@ -6,36 +6,38 @@ import DefultInput from '../../components/Forms/DefultInput'
 import { FaEnvelope, FaUser, FaLock } from "react-icons/fa";
 import DefaultBtn from '../../components/Buttons/DefaultBtn'
 import axios from 'axios'
+import { TbNumber123 } from "react-icons/tb";
 
 
 
-const SignUp = () => {
+const VerifyOTP = () => {
     const navigate = useNavigate()
-    const [signupdata, setsignupdata] = useState({
-        username: '', 
-        email: '',
-        password: ''
+    const [verifyotp, setverifyotp] = useState({ 
+        otp: '',
     })
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setsignupdata((prevData) => ({
+        setverifyotp((prevData) => ({
           ...prevData,
           [name]: value
         }));
     };
 
+    const getemail = localStorage.getItem('email')
+
     const headlesubmit = async (e) => {
         e.preventDefault()
 
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signup', signupdata)
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/verifyotp/' + getemail, verifyotp)
             if(res.data.Status === "Success"){
-                alert("Registion Success")
-                navigate('/signin')
+                alert("OTP Verification Success")
+                localStorage.setItem("sourcetoken", res.data.Token)
+                navigate('/passreset')
             }
             else{
-                alert(res.data.Error || "Registation failed. Please try again.");
+                alert(res.data.Error || "OTP Verifcation failed. Please try again.");
             }
         }
 
@@ -52,8 +54,8 @@ const SignUp = () => {
                 <div className="bg-[#0f5a97] p-4 w-full md:rounded-l-md rounded-t-md bg-cover bg-center md:py-8 py-4">
                     <center><img src={bgsignup} alt="" className='md:h-40 h-16 w-auto rounded'/></center>  
                     <div className="pt-4 text-center text-white">
-                        <h1 className="text-xl font-semibold">Welcome to Our Website</h1>
-                        <p className="">Create new Account</p>
+                        <h1 className="text-xl font-semibold">OTP Verify</h1>
+                        <p className=""></p>
 
                         <div className="py-4">
                             <h1 className="">JKITJobs</h1>
@@ -66,10 +68,6 @@ const SignUp = () => {
                             <img src={logo} alt="" className='h-8 w-auto xl:block hidden'/>
                             <h1 className="uppercase font-semibold text-[#0f5a97] pt-1 xl:block hidden">jobs.com</h1>
                         </div>
-                        <div className="flex">
-                            <p className="text-gray-500 md:block hidden">Already have an Account ? </p>
-                            <Link to={'/signin'}><p className='text-[#0f5a97] pt-1 font-semibold text-sm'>Sign in</p></Link>
-                        </div>
                     </div>
 
                     <div className="mt-8">
@@ -77,42 +75,19 @@ const SignUp = () => {
                             <form onSubmit={headlesubmit} method="post">
                                 <div className="my-4">
                                     <DefultInput 
-                                        icon={FaUser}
+                                        icon={TbNumber123}
                                         type={'text'}
-                                        name={'username'}
-                                        value={signupdata.username}
-                                        placeholder={"Enter Username"}
+                                        name={'otp'}
+                                        value={verifyotp.otp}
+                                        placeholder={"Enter OTP"}
                                         required={true}
                                         onChange={handleInputChange}
                                     />
                                 </div>
-                                <div className="my-4">
-                                    <DefultInput 
-                                        icon={FaEnvelope}
-                                        type={'email'}
-                                        name={'email'}
-                                        value={signupdata.email}
-                                        placeholder={"Enter Email Address"}
-                                        required={true}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className="my-4">
-                                    <DefultInput 
-                                        icon={FaLock}
-                                        type={'password'}
-                                        name={'password'}
-                                        value={signupdata.password}
-                                        placeholder={"Enter Password"}
-                                        required={true}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-
                                 <div className="mt-6">
                                     <DefaultBtn 
                                         type={'submit'}
-                                        btnvalue={"Create New Account"}
+                                        btnvalue={"Verify OTP"}
                                     />
                                 </div>
                             </form>
@@ -125,4 +100,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default VerifyOTP

@@ -9,17 +9,15 @@ import axios from 'axios'
 
 
 
-const SignUp = () => {
+const ForgetPass = () => {
     const navigate = useNavigate()
-    const [signupdata, setsignupdata] = useState({
-        username: '', 
+    const [forgetpass, setforgetpass] = useState({ 
         email: '',
-        password: ''
     })
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setsignupdata((prevData) => ({
+        setforgetpass((prevData) => ({
           ...prevData,
           [name]: value
         }));
@@ -29,13 +27,14 @@ const SignUp = () => {
         e.preventDefault()
 
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/signup', signupdata)
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/auth/forgetpass', forgetpass)
             if(res.data.Status === "Success"){
-                alert("Registion Success")
-                navigate('/signin')
+                alert("The Password Reset OTP Send to Email Success")
+                localStorage.setItem('email', forgetpass.email)
+                navigate('/verifyotp')
             }
             else{
-                alert(res.data.Error || "Registation failed. Please try again.");
+                alert(res.data.Error || "OTP Requesting failed. Please try again.");
             }
         }
 
@@ -52,8 +51,8 @@ const SignUp = () => {
                 <div className="bg-[#0f5a97] p-4 w-full md:rounded-l-md rounded-t-md bg-cover bg-center md:py-8 py-4">
                     <center><img src={bgsignup} alt="" className='md:h-40 h-16 w-auto rounded'/></center>  
                     <div className="pt-4 text-center text-white">
-                        <h1 className="text-xl font-semibold">Welcome to Our Website</h1>
-                        <p className="">Create new Account</p>
+                        <h1 className="text-xl font-semibold">Request OTP</h1>
+                        <p className="">For Reset Password</p>
 
                         <div className="py-4">
                             <h1 className="">JKITJobs</h1>
@@ -66,10 +65,6 @@ const SignUp = () => {
                             <img src={logo} alt="" className='h-8 w-auto xl:block hidden'/>
                             <h1 className="uppercase font-semibold text-[#0f5a97] pt-1 xl:block hidden">jobs.com</h1>
                         </div>
-                        <div className="flex">
-                            <p className="text-gray-500 md:block hidden">Already have an Account ? </p>
-                            <Link to={'/signin'}><p className='text-[#0f5a97] pt-1 font-semibold text-sm'>Sign in</p></Link>
-                        </div>
                     </div>
 
                     <div className="mt-8">
@@ -77,42 +72,19 @@ const SignUp = () => {
                             <form onSubmit={headlesubmit} method="post">
                                 <div className="my-4">
                                     <DefultInput 
-                                        icon={FaUser}
-                                        type={'text'}
-                                        name={'username'}
-                                        value={signupdata.username}
-                                        placeholder={"Enter Username"}
-                                        required={true}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                                <div className="my-4">
-                                    <DefultInput 
                                         icon={FaEnvelope}
                                         type={'email'}
                                         name={'email'}
-                                        value={signupdata.email}
+                                        value={forgetpass.email}
                                         placeholder={"Enter Email Address"}
                                         required={true}
                                         onChange={handleInputChange}
                                     />
                                 </div>
-                                <div className="my-4">
-                                    <DefultInput 
-                                        icon={FaLock}
-                                        type={'password'}
-                                        name={'password'}
-                                        value={signupdata.password}
-                                        placeholder={"Enter Password"}
-                                        required={true}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-
                                 <div className="mt-6">
                                     <DefaultBtn 
                                         type={'submit'}
-                                        btnvalue={"Create New Account"}
+                                        btnvalue={"Request OTP"}
                                     />
                                 </div>
                             </form>
@@ -125,4 +97,4 @@ const SignUp = () => {
   )
 }
 
-export default SignUp
+export default ForgetPass
