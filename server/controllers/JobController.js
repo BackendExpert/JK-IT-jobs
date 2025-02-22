@@ -129,7 +129,6 @@ const JobController = {
     applyforajob: async(req, res) => {
         try{
             const jobid = req.params.id
-            const jobposter = req.params.email
 
             const {
                 applicent_name,
@@ -162,7 +161,6 @@ const JobController = {
                 email: applicent_email,
                 cv: cv,
                 jobID: jobid,
-                jobposter: email
             })
 
             const resultapplyjob = await newjobapplication.save()

@@ -7,7 +7,6 @@ const JobApplySchema = new mongoose.Schema({
     status: { type: String, require: true, enum: ['applied', 'interviewd', 'rejected', 'hired'], default: 'applied' }, 
     applydate: { type: Date, required: true, default: Date.now },
     jobID: { type:mongoose.Schema.Types.ObjectId, ref: "Jobs", required: true},
-    jobposter: { type:mongoose.Schema.Types.ObjectId, ref: "User", required: true}
 });
 
 const JobApply = mongoose.model('JobApply', JobApplySchema);
