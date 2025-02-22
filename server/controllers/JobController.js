@@ -40,6 +40,17 @@ const JobController = {
         catch(err){
             console.log(err)
         }
+    },
+
+    alljobs: async(req, res) => {
+        try{
+            const getalljobs = await Job.find()
+
+            return res.json({ Result: getalljobs})
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 };
 
