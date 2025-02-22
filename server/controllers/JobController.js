@@ -1,3 +1,4 @@
+const JobApply = require("../models/JobApply");
 const Job = require("../models/Jobs");
 const User = require("../models/User");
 
@@ -131,10 +132,10 @@ const JobController = {
 
             const {
                 applicent_name,
-                email
+                applicent_email
             } = req.body
 
-            const cv  = req.file.path
+            const cv = req.file.path
             
             const checkjob = await Job.findOne({ _id: jobid })
 
@@ -142,33 +143,23 @@ const JobController = {
                 return res.json({ Error: "Job Cannot find"})
             }
 
-            const emailExists = checkjob.applications.some(app => app.email === email);
-
-            if (emailExists) {
-                return res.json({ Error: "You have already applied for this job" });
-            }
-    
-
-            const updatejobwithapply = await Job.findOneAndUpdate(
-                { _id: jobid },
+            const checkalreadyapply = await JobApply.findOne(
                 {
-                    $push: {
-                        applications: {
-                            name: applicent_name,
-                            email: email,
-                            cv: cv
-                        }
-                    }
-                },
-                { new: true }
-            );
+                    $and: [
+                        { jobID: jobid },
+                        { email:applicent_email },
+                    ]
+                }
+            )
 
-            if(updatejobwithapply){
-                return res.json({ Status: "Success" })
-            }   
-            else{
-                return res.json({ Error: "Internal Server Error while applying"})
+            if(checkalreadyapply){
+                return res.json({ Error: "You Alrady Apply for this job"})
             }
+
+            
+
+
+            
         }
         catch(err){
             console.log(err)
