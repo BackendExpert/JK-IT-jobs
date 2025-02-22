@@ -173,6 +173,19 @@ const JobController = {
         catch(err){
             console.log(err)
         }
+    },
+
+    jobscompany: async(req, res) => {
+        try{
+            const email = req.params.email
+            const getuserid = await User.findOne({ email: email })
+            const getjobs = await Job.find({ jobposter: getuserid._id }).populate('jobposter')
+
+            return res.json({ Result: getjobs})
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 };
 
