@@ -142,6 +142,10 @@ const JobController = {
                 return res.json({ Error: "Job Cannot find"})
             }
 
+            if(checkjob.applications.email === email){
+                return res.json({ Error: "You Alrady Apply for this Job..."})
+            }
+
             const updatejobwithapply = await Job.findOneAndUpdate(
                 { _id: jobid },
                 {
