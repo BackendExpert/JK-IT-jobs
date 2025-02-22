@@ -12,7 +12,8 @@ const JobSchema = new mongoose.Schema({
             name: { type: String, required: true },
             email: { type: String, required: true },
             cv: { type: String, required: true },
-            status: { type: String, require: true, enum: ['applied', 'interviewd', 'rejected', 'hired'], default: 'applied' } 
+            status: { type: String, require: true, enum: ['applied', 'interviewd', 'rejected', 'hired'], default: 'applied' }, 
+            applydate: { type: Date, required: true, default: Date.now }
         }
     ],
     closingdate: { type: Date, required: true },
