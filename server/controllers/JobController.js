@@ -130,11 +130,11 @@ const JobController = {
             const jobid = req.params.id
 
             const {
-                name,
-                email,
-            }
+                applicent_name,
+                email
+            } = req.body
 
-            const cv = 
+            const cv  = req.file.path
             
             const checkjob = await Job.findOne({ _id: jobid })
 
@@ -145,18 +145,28 @@ const JobController = {
             const updatejobwithapply = await Job.findOneAndUpdate(
                 { _id: jobid },
                 {
-                    $set: [
-                        applications.name
-                    ]
-                }
-            )
+                    $push: {
+                        applications: {
+                            name: applicent_name,
+                            email: email,
+                            cv: cv
+                        }
+                    }
+                },
+                { new: true }
+            );
+
+            if(updatejobwithapply){
+                return res.json({ Status: "Success" })
+            }   
+            else{
+                return res.json({ Error: "Internal Server Error while applying"})
+            }
         }
         catch(err){
             console.log(err)
         }
     }
-
-
 };
 
 module.exports = JobController;
