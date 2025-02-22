@@ -129,6 +129,7 @@ const JobController = {
     applyforajob: async(req, res) => {
         try{
             const jobid = req.params.id
+            const jobposter = req.params.email
 
             const {
                 applicent_name,
@@ -159,14 +160,19 @@ const JobController = {
             const newjobapplication = new JobApply({
                 name: applicent_name,
                 email: applicent_email,
-                cv: cv
-
+                cv: cv,
+                jobID: jobid,
+                jobposter: email
             })
 
+            const resultapplyjob = await newjobapplication.save()
 
-
-
-            
+            if(resultapplyjob){
+                return res.json({ Status: "Success"})
+            }
+            else{
+                return res.json({ Error: "Internal Server Error"})
+            }            
         }
         catch(err){
             console.log(err)
