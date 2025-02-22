@@ -6,5 +6,7 @@ const router = express.Router();
 
 router.post('/createjob/:email', authMiddleware, JobController.createJob)
 router.get('/alljobs', JobController.alljobs)
+router.get('/getcomjobs/:email', authMiddleware, JobController.getmyjobscompany)
+
 
 module.exports = router;

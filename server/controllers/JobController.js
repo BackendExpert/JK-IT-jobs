@@ -51,7 +51,81 @@ const JobController = {
         catch(err){
             console.log(err)
         }
+    },
+
+    getmyjobscompany: async(req, res) => {
+        try{
+            const email = req.params.email
+
+            const getuserid = await User.findOne({ email: email })
+
+            const getonlycomjobs = await Job.find({ jobposter: getuserid._id})
+
+            if(getonlycomjobs){
+                return res.json({ Result: getonlycomjobs })
+            }
+            else{
+                return res.json({ Error: "No Jobs Foud"})
+            }
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    // updatejob: async(req, res) => {
+    //     try{
+    //         const email = req.params.email
+    //         const jobid = req.params.id
+
+    //         const { 
+
+    //         } = req.body
+
+    //         const getuserid = await User.findOne({ email: email})
+
+    //         const getjob = await Job.findOne({ _id: jobid })
+
+    //         if(getjob.jobposter !== getuserid._id){
+    //             return res.json({ Error: "Internal Server Error"})
+    //         }
+
+
+    //     }
+    //     catch(err){
+    //         console.log(err)
+    //     }
+    // },
+
+    deletejob: async(req, res) => {
+        try{
+            const email = req.params.email
+            const jobid = req.params.id
+
+            const getuserid = await User.findOne({ email: email })
+
+            const getjob = await Job.findOne({ _id: jobid})
+
+            if(getjob.jobposter !== getuserid._id){
+                return res.json({ Error: "Internal Server Error"})
+            }
+
+            const deletejobbuid = await Job.findOneAndDelete({ _id: getjob._id })
+
+            if(deletejobbuid){
+                return res.json({ Status: "Success"})
+            }
+            else{
+                return res.json({ Error: "Internal Server Error"})
+            }
+
+        }
+        catch(err){
+            console.log(err)
+        }
     }
+
+
 };
 
 module.exports = JobController;
