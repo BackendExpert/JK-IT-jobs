@@ -1,4 +1,5 @@
 const Job = require("../models/Jobs");
+const User = require("../models/User");
 
 const JobController = {
     createJob: async(req, res) => {
@@ -15,8 +16,10 @@ const JobController = {
                 closingdate
             } = req.body
 
+            const getid = await User.findOne({ email: email })
+
             const newJob = new Job({
-                jobposter: email,
+                jobposter: getid._id,
                 jobTitle: jobtitle,
                 desc: jobdesc,
                 salary: salary,
