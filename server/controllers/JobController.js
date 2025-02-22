@@ -153,6 +153,7 @@ const JobController = {
             )
 
             if(checkalreadyapply){
+                if (cv) fs.unlinkSync(cv);
                 return res.json({ Error: "You Alrady Apply for this job"})
             }
 
