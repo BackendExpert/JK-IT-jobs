@@ -11,5 +11,6 @@ router.get('/getcomjobs/:email', authMiddleware, JobController.getmyjobscompany)
 router.delete('/deletejob/:email/:id', authMiddleware, JobController.deletejob)
 router.post('/applyjob/:id', upload.single('cv'), JobController.applyforajob)
 router.get('/jobscompany/:email', authMiddleware, JobController.jobscompany)
+router.get('/countjobcompany/:email', authMiddleware, JobController.countjobcompany)
 
 module.exports = router;

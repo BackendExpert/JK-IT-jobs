@@ -186,6 +186,30 @@ const JobController = {
         catch(err){
             console.log(err)
         }
+    },
+
+    countjobcompany: async(req, res) => {
+        try{
+            const email = req.params.email
+            const getuserid = await User.findOne({ email: email })
+
+            const countdata = await Job.countDocuments({ jobposter: getuserid._id})
+
+            return res.json({ Result: countdata})
+
+        }
+        catch(err){
+            console.log(err)
+        }
+    },
+
+    counttotalapplied: async(req, res) =>{
+        try{
+            
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 };
 
