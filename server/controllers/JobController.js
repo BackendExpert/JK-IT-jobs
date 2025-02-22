@@ -192,6 +192,11 @@ const JobController = {
         }
     },
 
+    // upto here ok
+    // fix fpllowing
+
+    // countjobcompany and counttotalapplied ---------------------------------------------
+
     countjobcompany: async(req, res) => {
         try{
             const email = req.params.email
