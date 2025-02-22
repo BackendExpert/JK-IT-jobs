@@ -7,6 +7,6 @@ const router = express.Router();
 router.post('/createjob/:email', authMiddleware, JobController.createJob)
 router.get('/alljobs', JobController.alljobs)
 router.get('/getcomjobs/:email', authMiddleware, JobController.getmyjobscompany)
-
+router.delete('/deletejob/:email/:id', authMiddleware, JobController.deletejob)
 
 module.exports = router;
