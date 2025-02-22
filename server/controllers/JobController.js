@@ -156,7 +156,14 @@ const JobController = {
                 return res.json({ Error: "You Alrady Apply for this job"})
             }
 
-            
+            const newjobapplication = new JobApply({
+                name: applicent_name,
+                email: applicent_email,
+                cv: cv
+
+            })
+
+
 
 
             
