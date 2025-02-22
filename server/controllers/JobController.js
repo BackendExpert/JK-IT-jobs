@@ -205,10 +205,8 @@ const JobController = {
 
     counttotalapplied: async(req, res) =>{
         try{
-            const email = req.params.email
-            const getuserid = await User.findOne({ email: email })
-
             
+
         }
         catch(err){
             console.log(err)
