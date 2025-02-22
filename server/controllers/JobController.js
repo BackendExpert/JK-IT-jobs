@@ -1,6 +1,7 @@
 const JobApply = require("../models/JobApply");
 const Job = require("../models/Jobs");
 const User = require("../models/User");
+const fs = require('fs');
 
 const JobController = {
     createJob: async(req, res) => {
