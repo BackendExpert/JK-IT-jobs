@@ -123,6 +123,37 @@ const JobController = {
         catch(err){
             console.log(err)
         }
+    },
+
+    applyforajob: async(req, res) => {
+        try{
+            const jobid = req.params.id
+
+            const {
+                name,
+                email,
+            }
+
+            const cv = 
+            
+            const checkjob = await Job.findOne({ _id: jobid })
+
+            if(!checkjob){
+                return res.json({ Error: "Job Cannot find"})
+            }
+
+            const updatejobwithapply = await Job.findOneAndUpdate(
+                { _id: jobid },
+                {
+                    $set: [
+                        applications.name
+                    ]
+                }
+            )
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
 
