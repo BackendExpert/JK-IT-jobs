@@ -17,7 +17,7 @@ const sidemenu = [
         id: 2,
         name: "Jobs",
         icon: MdWork,
-        link: '#'
+        link: '/Dashboard/Jobs'
     },
     {
         id: 3,
