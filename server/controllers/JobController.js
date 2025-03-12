@@ -12,7 +12,6 @@ const JobController = {
                 jobtitle,
                 jobdesc,
                 salary,
-                desc,
                 qulifications,
                 skills,
                 closingdate
@@ -218,7 +217,7 @@ const JobController = {
             // const checkapplication = await User.findOne({ email: companyemail })
             const getallapplocations = await JobApply.countDocuments()
             
-            
+
 
             
             return res.json({ Result: getallapplocations })

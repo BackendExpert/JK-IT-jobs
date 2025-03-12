@@ -1,7 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaBriefcaseMedical } from "react-icons/fa6";
+import DefultInput from '../../components/Forms/DefultInput';
+import { MdTitle, MdDateRange  } from "react-icons/md";
 
 const CreateJobs = () => {
+    const [createjob, setcreatejob] = useState({
+        jobtitle: '',
+        jobdesc: '',
+        salary: '',
+        qulifications: '',
+        skills: '',
+        closingdate: ''
+    })
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setcreatejob((prevData) => ({
+          ...prevData,
+          [name]: value
+        }));
+    };
+
+    const headleCreateJob = (e) => {
+        e.preventDefault()
+        try{
+
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
   return (
     <div className='my-12 mr-4'>
         <div className="flex">
@@ -21,7 +49,38 @@ const CreateJobs = () => {
             </a>
         </div>
 
-        
+        <div className="py-4">
+            <form onSubmit={headleCreateJob} method="post">
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div className="">
+                        <DefultInput 
+                            icon={MdTitle}
+                            type={'text'}
+                            name={'jobtitle'}
+                            value={createjob.jobtitle}
+                            placeholder={"Job Title"}
+                            required={true}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div className="">
+                        <DefultInput 
+                            icon={MdDateRange}
+                            type={'date'}
+                            name={'closingdate'}
+                            value={createjob.closingdate}
+                            placeholder={"Job Title"}
+                            required={true}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                </div>
+                <div className="">
+                    
+                </div>
+
+            </form>
+        </div>
     </div>
   )
 }
