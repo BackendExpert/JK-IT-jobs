@@ -5,6 +5,9 @@ const DefultTextArea = ({ name, value, required, placeholder, onChange }) => {
     <textarea
         name={name}
         value={value}
+        required={!!required}
+        onChange={onChange}
+        placeholder={placeholder}
         className='
             h-24 
             bg-white 
@@ -17,7 +20,6 @@ const DefultTextArea = ({ name, value, required, placeholder, onChange }) => {
             focus:outline-none 
             focus:border-[#0f5a97]
             placeholder:text-[#0f5a97]
-
         '
     >
 
