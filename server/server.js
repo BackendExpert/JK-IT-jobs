@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 const ConnectDB = require('./config/DB');
 const authRoute = require('./routes/authRoute')
 const jobRoute = require('./routes/jobRoute')
+const CompanyRoute = require('./routes/CompanyRoute')
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -25,6 +26,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/auth', authRoute)
 app.use('/jobs', jobRoute)
+app.use('/company', CompanyRoute)
 
 
 app.get('/', (req, res) => {
