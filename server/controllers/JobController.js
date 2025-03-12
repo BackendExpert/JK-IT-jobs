@@ -214,7 +214,14 @@ const JobController = {
 
     counttotalapplied: async(req, res) =>{
         try{
+            const companyemail = req.params.email;
+            // const checkapplication = await User.findOne({ email: companyemail })
+            const getallapplocations = await JobApply.countDocuments()
             
+            
+
+            
+            return res.json({ Result: getallapplocations })
         }
         catch(err){
             console.log(err)
