@@ -9,6 +9,9 @@ import Dashbaord from "./components/Dashbaord/Dashbaord";
 import DashHome from "./pages/Dashboard/DashHome";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import Jobs from "./pages/Jobs/Jobs";
+import CreateJobs from "./pages/Jobs/CreateJobs";
+import ViewJob from "./pages/Jobs/ViewJob";
+import CompanyPage from "./pages/CompanyPageDash/CompanyPage";
 
 export default function App() {
 
@@ -25,6 +28,9 @@ export default function App() {
         <Route path="/Dashboard/" element={<PrivateRoute element={<Dashbaord /> }/> } >
           <Route path="Home" element={<DashHome /> } /> 
           <Route path="Jobs" element={<Jobs /> } />
+          <Route path="CreateJob" element={<CreateJobs /> } />
+          <Route path="ViewJob/:id" element={<ViewJob /> } />
+          <Route path="CompanyPage" element={<CompanyPage /> } />
         </Route>
       </Routes>
     </BrowserRouter>
