@@ -11,7 +11,7 @@ const Jobs = () => {
                 </div>
             </div>
             <div className="pl-4">
-                <h1 className="text-[#0f5a97] text-xl pt-1 font-semibold uppercase">Dashboard</h1>
+                <h1 className="text-[#0f5a97] text-xl pt-1 font-semibold uppercase">jobs</h1>
             </div>
         </div>
     </div>
