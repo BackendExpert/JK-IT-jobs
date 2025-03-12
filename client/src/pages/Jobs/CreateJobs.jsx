@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
-import { FaBriefcaseMedical } from "react-icons/fa6";
+import { FaBriefcaseMedical, FaMoneyBills } from "react-icons/fa6";
 import DefultInput from '../../components/Forms/DefultInput';
-import { MdTitle, MdDateRange  } from "react-icons/md";
+import { MdTitle, MdDateRange, MdDescription } from "react-icons/md";
+import DefultTextArea from '../../components/Forms/DefultTextArea';
+import { BsBookmarkStarFill, BsPersonFillGear } from "react-icons/bs";
+
+
 
 const CreateJobs = () => {
     const [createjob, setcreatejob] = useState({
@@ -75,10 +79,53 @@ const CreateJobs = () => {
                         />
                     </div>
                 </div>
-                <div className="">
-                    
+                <div className="my-4">
+                    <DefultTextArea 
+                        Icon={MdDescription}
+                        name={'jobdesc'}
+                        value={createjob.jobdesc}
+                        placeholder={"Job Description"}
+                        required={true}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="my-4">
+                    <DefultTextArea 
+                        Icon={BsBookmarkStarFill}
+                        name={'qulifications'}
+                        value={createjob.qulifications}
+                        placeholder={"Job Qulifications (use , to separate qulifications)"}
+                        required={true}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="my-4">
+                    <DefultTextArea 
+                        Icon={BsPersonFillGear}
+                        name={'skills'}
+                        value={createjob.skills}
+                        placeholder={"Job Skills (use , to separate Skills)"}
+                        required={true}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="my-4">
+                    <DefultInput 
+                        icon={FaMoneyBills}
+                        type={'number'}
+                        name={'salary'}
+                        value={createjob.salary}
+                        placeholder={"Job Title"}
+                        required={true}
+                        onChange={handleInputChange}
+                    />
                 </div>
 
+                <div className="mt-4">
+                    <div className="">
+                        <button type='submit' className='bg-[#0f5a97] py-2 px-6 rounded-md text-white'>Create New Job</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
