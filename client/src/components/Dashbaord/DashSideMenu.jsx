@@ -29,7 +29,7 @@ const sidemenu = [
         id: 4,
         name: "My Company",
         icon: FaBuildingShield,
-        link: '#'
+        link: '/Dashboard/CompanyPage'
     },
     {
         id: 5,
