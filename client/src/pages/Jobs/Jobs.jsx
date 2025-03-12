@@ -1,5 +1,6 @@
 import React from 'react'
 import { MdWork } from "react-icons/md";
+import AllJobsinCom from './AllJobsinCom';
 
 const Jobs = () => {
   return (
@@ -22,7 +23,7 @@ const Jobs = () => {
         </div>
 
         <div className="mt-4">
-            
+            <AllJobsinCom />
         </div>
     </div>
   )
