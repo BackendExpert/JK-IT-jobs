@@ -8,6 +8,7 @@ import ResetPass from "./pages/AuthPages/ResetPass";
 import Dashbaord from "./components/Dashbaord/Dashbaord";
 import DashHome from "./pages/Dashboard/DashHome";
 import PrivateRoute from "./components/auth/PrivateRoute";
+import Jobs from "./pages/Jobs/Jobs";
 
 export default function App() {
 
@@ -23,6 +24,7 @@ export default function App() {
 
         <Route path="/Dashboard/" element={<PrivateRoute element={<Dashbaord /> }/> } >
           <Route path="Home" element={<DashHome /> } /> 
+          <Route path="Jobs" element={<Jobs /> } />
         </Route>
       </Routes>
     </BrowserRouter>
