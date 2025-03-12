@@ -14,6 +14,16 @@ const Jobs = () => {
                 <h1 className="text-[#0f5a97] text-xl pt-1 font-semibold uppercase">jobs</h1>
             </div>
         </div>
+
+        <div className="mt-2">
+            <a href="/Dashboard/CreateJob">
+                <button className='bg-[#0f5a97] py-2 px-6 rounded-md text-white'>CreateJob</button>
+            </a>
+        </div>
+
+        <div className="mt-4">
+            
+        </div>
     </div>
   )
 }
