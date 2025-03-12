@@ -15,6 +15,7 @@ const CreateJobs = () => {
     const EmailUser = secureLocalStorage.getItem('loginE')
     const Username = secureLocalStorage.getItem('loginU')
     const token = localStorage.getItem('login')
+
     const [createjob, setcreatejob] = useState({
         jobtitle: '',
         jobdesc: '',
@@ -35,7 +36,7 @@ const CreateJobs = () => {
     const headleCreateJob = async (e) => {
         e.preventDefault()
         try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/jobs/createjob/' + EmailUser, {
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/jobs/createjob/' + EmailUser, createjob, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -132,7 +133,7 @@ const CreateJobs = () => {
                 <div className="my-4">
                     <DefultInput 
                         icon={FaMoneyBills}
-                        type={'number'}
+                        type={'text'}
                         name={'salary'}
                         value={createjob.salary}
                         placeholder={"Job Title"}
