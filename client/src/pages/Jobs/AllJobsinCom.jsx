@@ -13,9 +13,36 @@ const AllJobsinCom = () => {
         .then(res => setalljobs(res.data.Result))
         .catch(err => console.log(err))
     }, [])
-    
+
   return (
-    <div>AllJobsinCom</div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Job ID</th>
+                    <th>Job Title</th>
+                    <th>Applications</th>
+                    <th>Closing Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    alljobs.map((jobs, index) => {
+                        return (
+                            <tr className="" key={index}>
+                                <td>{jobs._id}</td>
+                                <td>{jobs.jobTitle}</td>
+                                <td>24</td>
+                                <td>{jobs.closingdate}</td>
+                                <td></td>
+                            </tr>
+                        )
+                    })
+                }
+            </tbody>
+        </table>
+    </div>
   )
 }
 

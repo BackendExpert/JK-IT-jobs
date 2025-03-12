@@ -17,7 +17,7 @@ const Jobs = () => {
 
         <div className="mt-2">
             <a href="/Dashboard/CreateJob">
-                <button className='bg-[#0f5a97] py-2 px-6 rounded-md text-white'>CreateJob</button>
+                <button className='bg-[#0f5a97] py-2 px-6 rounded-md text-white'>Create Job</button>
             </a>
         </div>
 
