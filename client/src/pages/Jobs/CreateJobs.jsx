@@ -4,10 +4,17 @@ import DefultInput from '../../components/Forms/DefultInput';
 import { MdTitle, MdDateRange, MdDescription } from "react-icons/md";
 import DefultTextArea from '../../components/Forms/DefultTextArea';
 import { BsBookmarkStarFill, BsPersonFillGear } from "react-icons/bs";
-
+import axios from 'axios';
+import secureLocalStorage from "react-secure-storage";
+import { useNavigate } from 'react-router-dom';
 
 
 const CreateJobs = () => {
+    const navigate = useNavigate()
+    const RoleUser = secureLocalStorage.getItem('loginR')
+    const EmailUser = secureLocalStorage.getItem('loginE')
+    const Username = secureLocalStorage.getItem('loginU')
+    const token = localStorage.getItem('login')
     const [createjob, setcreatejob] = useState({
         jobtitle: '',
         jobdesc: '',
@@ -25,10 +32,23 @@ const CreateJobs = () => {
         }));
     };
 
-    const headleCreateJob = (e) => {
+    const headleCreateJob = async (e) => {
         e.preventDefault()
         try{
-
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/jobs/createjob/' + EmailUser, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            .then(res => {
+                if(res.data.Status === "Success"){
+                    alert("New Job Created Success")
+                    navigate('/Dashboard/Jobs')
+                }
+                else{
+                    alert(res.data.Error)
+                }
+            })
         }
         catch(err){
             console.log(err)
